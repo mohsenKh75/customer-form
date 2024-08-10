@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/moment-jalaali": "^0.7.9",
+    "clsx": "^2.1.1",
+    "moment-jalaali": "^0.10.1",
     "next": "14.2.5",
     "react": "^18",
+    "react-datepicker2": "^3.3.13",
     "react-dom": "^18",
     "react-hook-form": "^7.52.2"
   },
