@@ -8,8 +8,9 @@ import { Button } from "@/core/Button";
 import toast from "react-hot-toast";
 import { mockReq } from "@/mock/mockReq";
 import { useRouter } from "next/navigation";
+import { isServerSide } from "@/utils/checkers";
 
-interface IFormInput {
+export interface FormData {
   name: string;
   lastName: string;
   idNumber: string;
@@ -21,16 +22,27 @@ interface IFormInput {
 }
 
 export function CustomerForm({ data }: { data: any }) {
-  const methods = useForm<IFormInput>();
+  const methods = useForm<FormData>();
   const router = useRouter();
 
-  function onSubmit(data: IFormInput) {
-    console.log(data);
-    mockReq(data).then(() =>
-      toast.success(`${data.name}عزیز، اطلاعات شما با موفقیت ثبت شد`, {
-        duration: 2000,
-      })
-    );
+  function onSubmit(data: FormData) {
+    const formDataStr = !isServerSide && localStorage?.getItem("form-data");
+    const formData = formDataStr ? JSON.parse(formDataStr) : null;
+    const loanList: Array<FormData> = formData || [];
+    loanList.push(data);
+
+    mockReq(data)
+      .then(() =>
+        toast.success(`${data.name}عزیز، اطلاعات شما با موفقیت ثبت شد`, {
+          duration: 2000,
+        })
+      )
+      .then(
+        () =>
+          !isServerSide &&
+          localStorage?.setItem("form-data", JSON.stringify(loanList))
+      )
+      .then(() => router.push("/loan-list"));
   }
 
   return (

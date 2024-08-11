@@ -18,14 +18,6 @@ export function getMonthlyRepayment({
   profitPercentage?: string | number;
   monthsAmount: string | number;
 }) {
-  console.log(
-    getCurrency(
-      Number(repaymentAmount) +
-        (Number(repaymentAmount) * Number(profitPercentage)) /
-          Number(monthsAmount)
-    )
-  );
-
   return getCurrency(
     (Number(repaymentAmount) +
       Number(repaymentAmount) * Number(profitPercentage)) /
