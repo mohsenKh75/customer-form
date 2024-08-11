@@ -16,7 +16,8 @@
     "react": "^18",
     "react-datepicker2": "^3.3.13",
     "react-dom": "^18",
-    "react-hook-form": "^7.52.2"
+    "react-hook-form": "^7.52.2",
+    "react-hot-toast": "^2.4.1"
   },
   "devDependencies": {
     "@types/node": "^20",
