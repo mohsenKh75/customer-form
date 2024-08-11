@@ -1,7 +1,7 @@
-export const pageData = async (data: any) => {
+export async function mockReq(data: any) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(data);
     }, 1000);
   });
-};
+}
