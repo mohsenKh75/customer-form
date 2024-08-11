@@ -6,16 +6,7 @@ import { FIELDS } from "./fieldsConstants";
 import { getCurrency } from "@/utils/getCurrency";
 import { getDelayFine, getMonthlyRepayment } from "@/utils/repaymentHelpers";
 import { Dropdown } from "@/core/Dropdown";
-
-interface Loan {
-  id: string;
-  name: string;
-  amount: number;
-  percentageRate?: number;
-  interestRate?: number;
-  penaltyRate: number;
-  repaymentType: Array<{ name: string; value: string }>;
-}
+import { Loan } from "@/types/loan";
 
 interface LoanDropdownProps {
   loans: Array<Loan>;
